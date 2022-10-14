@@ -1,0 +1,144 @@
+.Header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  color: white;
+  position: relative;
+}
+.LogoImg{
+  margin: 0 3rem;
+}
+.Line{
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, .3);
+  position: relative;
+  left: 10px;
+}
+.Line::after{
+  content: '';
+  display: block;
+  width: 6%;
+  height: 1px;
+  background: rgba(255, 255, 255, .2);
+  position: absolute;
+  right: -3%;
+  z-index: 100;
+}
+.MainNav{
+  background: rgba(255, 255, 255, .2);
+  display: flex;
+  backdrop-filter: blur(10px);
+  padding: 0 5rem;
+}
+.NavUl{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  font-size: 1.25rem;
+}
+.NavUl li {
+  cursor: pointer;
+  position: relative;
+}
+.NavUl li::after{
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.NavUl li:hover::after, .NavUl .active::after{
+  background: white;
+}
+.NavUl li a{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: .5rem;
+  padding: 2.5rem 0;
+}
+
+.NavUl li a span{
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+@media (max-width:1100px) {
+  .Line{
+    display: none;
+  }
+  .MainNav{
+    padding: 0 2rem;
+    background: rgba(200, 200, 200, .6);
+    backdrop-filter: blur(0px);
+  }
+  .numberNav{
+    display: none;
+  }
+  .NavUl{
+    font-size: 1.2rem;
+  }
+  .NavUl li a{
+    padding: 2rem 0 !important;
+  }
+
+}
+@media (max-width:720px) {
+    .MobileMenu{
+      display: block;
+      margin-right: 2rem;
+      display: grid;
+      gap: .3rem;
+      position: relative;
+      z-index: 100;
+    }
+    .MobileMenu span{
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: .3s ease;
+    }
+    .MobileMenu.active span:first-child{
+      transform: translate(0px, 8px) rotate(-45deg);
+    }
+    .MobileMenu.active span:last-child{
+      transform: translate(0px, -8px) rotate(45deg);
+    }
+    .MobileMenu.active span:nth-child(2){
+     opacity: 0;
+    }
+    .MobileMenu.active ~ .MainNav{
+      right: 0;
+    }
+    .MainNav{
+      position: absolute;
+      z-index: 90;
+      right: -100%;
+      top: -0rem;
+      padding: 1rem 5rem 1rem 2rem;
+      height: 100vh;
+      background: rgba(255, 255, 255, .2);
+      backdrop-filter: blur(20px);
+      transition: .3s ease;
+    }
+    .NavUl{
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: .5rem;
+    }
+    .NavUl li{
+      font-size: 1.5rem;
+    }
+    .NavUl li a{
+      padding: 0 ;
+    }
+    .NavUl li::after{display: none;}
+    .numberNav{display: block;}
+}
